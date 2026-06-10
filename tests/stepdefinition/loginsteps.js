@@ -21,8 +21,9 @@ When('User enter the "<username>" and "<password>" and clicks login button', asy
 });
 
 Then('User should be navigated to the search hotel page', async function () {
+   await this.page.waitForNavigation();
    const currentUrl = this.page.url();
-   await expect(this.page).toHaveURL('https://adactinhotelapp.com/');
+   expect(currentUrl).not.toBe('https://adactinhotelapp.com/');
 });
 
 Then('User should see the error message {string}', async function (errorMessage) {
